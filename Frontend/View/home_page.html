@@ -1,0 +1,117 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="home_page.css" />
+
+<body>
+    <div style="margin-top: 60px;">
+        <div class="content-width">
+            <div class="slideshow">
+                <!-- Slideshow Items -->
+                <div class="slideshow-items">
+                    <div class="item">
+                        <div class="item-image-container">
+                            <img class="item-image" src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/Nui-Ngu-Hanh-Son.png" />
+                        </div>
+                        <div class="item-description">
+                            <span class="vertical-part">
+                                <a href="https://www.w3schools.com">Du lich Ngu Hanh Son</a>
+                            </span>
+                            <br>
+                            <span class="vertical-part">
+                                <b>Ngu Hanh Son hien nay la 1 trong nhung noi du lich chua duoc biet den</b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-image-container">
+                            <img class="item-image" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Ngu_hanh_son_toan_canh.jpg" />
+                        </div>
+                        <div class="item-description">
+                            <span class="vertical-part">
+                                <a href="https://www.w3schools.com">Canh quan Ngu Hanh Son</a>
+                            </span>
+                            <br>
+                            <span class="vertical-part">
+                                <b>Thien nhien Ngu Hanh Son rat ky vi</b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <ul>
+                            <li class="control" data-index="0"></li>
+                            <li class="control" data-index="1"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="home_page.js"></script>
+        </div>
+        <div id="filter-search">
+            <div class="dropdown">
+                <button class="dropbtn">Lọc bài viết</button>
+                <div class="dropdown-content">
+                    <a href="#">Cảnh quan</a>
+                    <a href="#">Lịch sử</a>
+                    <a href="#">Văn hóa</a>
+                </div>
+            </div>
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search" style="margin-top:0;"></i></i></button>
+                </form>
+            </div>
+        </div>
+        <div id="list-post">
+            <div class="post">
+                <img class="post-img" src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/Nui-Ngu-Hanh-Son.png">
+                <div class="title">
+                    <a href="#">Du lich Ngu Hanh Son</a>
+                </div>
+            </div>
+            <div class="post">
+                <img class="post-img" src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/Nui-Ngu-Hanh-Son.png">
+                <div class="title">
+                    <a href="#">Du lich Ngu Hanh Son</a>
+                </div>
+            </div>
+            <div class="post">
+                <img class="post-img" src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/Nui-Ngu-Hanh-Son.png">
+                <div class="title">
+                    <a href="#">Du lich Ngu Hanh Son</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="nav_bar">
+        <div id="home">
+            <button type="button" class="btn btn-primary nav-but" style="background-color: rgb(27, 206, 146);">
+                HOME
+            </button>
+        </div>
+        <div id="advice">
+            <button type="button" class="btn btn-primary nav-but" style="background-color: rgb(27, 206, 146);">
+                HƯỚNG DẪN
+            </button>
+        </div>
+        <div id="admin_page">
+            <button type="button" class="btn btn-primary nav-admin" style="background-color: rgb(27, 206, 146);margin-left:500px;">
+                QUẢN LÝ
+            </button>
+        </div>
+        <div id="new_post">
+            <button type="button" class="btn btn-primary" style="background-color: rgb(29, 188, 250);width:40px;height:40px;margin-top:10px;margin-left:20px;">
+                +
+            </button>
+        </div>
+        <div id="logout">
+            <button type="button" class="btn btn-primary nav-admin" style="background-color: rgb(27, 206, 146);margin-left:30px;">
+                LOGOUT
+            </button>
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
