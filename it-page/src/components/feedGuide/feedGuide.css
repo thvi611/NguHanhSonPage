@@ -1,0 +1,11 @@
+#list-guide {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #35afc5;
+    min-height: 320px;
+    height: auto;
+    width: 1000px;
+    margin-left: 120px;
+    margin-top: 100px;
+    border-radius: 10px;
+}

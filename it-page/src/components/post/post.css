@@ -1,0 +1,28 @@
+.post {
+    height: 260px;
+    width: 300px;
+    margin-left: 25px;
+    margin-top: 30px;
+    background-color: #d1d1d1;
+    border-radius: 5px;
+}
+
+.post-img {
+    height: 200px;
+    width: 300px;
+}
+
+.title {
+    width: auto;
+    height: auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.post>.title>p {
+    text-align: center;
+    color: #2c2c31;
+    font-size: 1.5rem;
+}
