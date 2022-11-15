@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use PhpParser\Node\Expr\AssignOp\Pow;
 
 class PostController extends Controller
 {
@@ -69,6 +71,22 @@ class PostController extends Controller
     {
         //
         return $post->load('categories','comments');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function getPostByCategoryId(Category $category)
+    {
+        $category->load('posts');
+        // $post = Post::all()->load(array('categories' => function($query) use ($category){
+        //     $query->where('category_id',$category->id);
+        // }));
+        // return $post;
+        return $category;
     }
 
     /**
