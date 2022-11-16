@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -30,3 +31,8 @@ Route::get('/post/category/{category}', [PostController::class, 'getPostByCatego
 Route::post('/post', [PostController::class, 'store']);
 Route::delete('/post/{post}', [PostController::class, 'destroy']);
 // Route::resource('post',PostController::class);
+
+// Route::resource('/category',CategoryController::class);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/category', [CategoryController::class, 'store']);
+Route::delete('/category/{category}', [CategoryController::class, 'destroy']);
