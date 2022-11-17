@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="home.css">
+    
+
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+        <title></title>
+    </head>  
+    <title>
+
+    </title>
+    <body style="background-color: #dee2e6" >
+        <div class="header" style="background-color: aqua; ">
+        
+            <a href=""><i class="fa fa-home"></i></a>
+
+        </div>
+        <div class="panel-body">
+            <div class="rowrr " style="display: inline-block;width: 100%;">
+                <div class="col1" style="position: relative;float: left;width:auto;height: auto;background-color: white; padding:0px; margin:20px 20px 20px 50px;" >
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" style="text-align: left;" id="v-pills-home-tab" data-toggle="pill" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Quản lí tag</button>
+                        <button class="nav-link" style="text-align: left;" id="v-pills-profile-tab" data-toggle="pill" data-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Đổi mật khẩu</button>
+                        <button class="nav-link" style="text-align: left;" id="v-pills-messages-tab" data-toggle="pill" data-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Thêm tài khoản</button>
+                        
+      
+                        
+                      </div>
+                </div>
+                <div class="col1" style="float:left;width:auto;background-color: white;padding:20px 20px 20px 20px;">
+
+
+                    <div class="tab-content" id="v-pills-tabContent" >
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="content-box-large">
+                                <div class="panel-body">
+                                    <div class="row">Quản lí Tag</div><br>
+                                    
+                                    <div class="row">
+                                        <button type="button" class="btn-add">
+                                            <i class=""></i>
+                                            Thêm Tag
+                                        </button>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-striped table-bordered" id="tag">
+                                                <thead>
+                                                    <tr>
+                                                        <th>id</th>
+                                                        <th>tên tag</th>
+                                                        <th>Số bài viết</th>
+                                                        <th>Hành động</th>
+    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="odd gradeX">
+                                                        <td>1</td>
+                                                        <td>Văn hoá</td>
+                                                        <td>0</td>
+                                                        <td class="">
+                                                            <a href="" class="btn btn-info">Sửa</a>
+                                                            <a href="" class="btn btn-danger">Xoá</a>
+                                                        </td>
+    
+                                                    </tr>
+                                                </tbody>
+
+                                                <tbody>
+                                                    <tr class="odd gradeX">
+                                                        <td>2</td>
+                                                        <td>Cảnh quan</td>
+                                                        <td>5</td>
+                                                        <td class="">
+                                                            <a href="" class="btn btn-info" >Sửa</a>
+                                                            <a href="" class="btn btn-danger" style="pointer-events: none;
+                                                            opacity: 0.4;">Xoá</a>
+                                                        </td>
+    
+                                                    </tr>
+                                                </tbody>
+
+                                                <tbody>
+                                                    <tr class="odd gradeX">
+                                                        <td>3</td>
+                                                        <td>Khách du lịch</td>
+                                                        <td>0</td>
+                                                        <td class="">
+                                                            <a href="" class="btn btn-info">Sửa</a>
+                                                            <a href="" class="btn btn-danger">Xoá</a>
+                                                        </td>
+    
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <form id="frm1" method="post">
+                                <b class="title-form">パスワードを変更する</b>
+                                <table>
+                                <tr>
+                                    <td>
+                                        <label>アカウント</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="txt" id="un" name="un" readonly />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>パスワード古い</label> 
+                                    </td>
+                                    <td>
+                                        <input type="password" class="txt" id="mk" name="mk" />
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td>
+                                        <label>パスワード 新しい</label> 
+                                    </td>
+                                    <td>
+                                        <input type="password" class="txt" id="mk" name="mk" />
+                                    </td>
+                                </tr>
+                                  
+                                </table>
+                                <p class="btn">
+                                    <button type="reset" >Reset</button>
+                                  <button type="submit">変化</button>
+                                </p>
+                              </form>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <form id="frm1" method="post">
+                                <b>アカウントを作成する</b>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <label>新しいアカウント</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="txt" id="un" name="un" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">パスワード</label></td>
+                                        <td><input type="password" class="txt" id="mk" name="mk" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="">パスワードを繰り返す</label></td>
+                                        <td><input type="password" class="txt" id="mk" name="mk" /></td>
+                                    </tr>
+                                </table>
+                                
+                                <p>
+                                  
+                                    <button type="reset" >Reset</button>
+                                   <button type="submit">作成</button>
+                                </p>
+                              </form>
+                        </div>
+                        
+                      </div>
+
+
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
