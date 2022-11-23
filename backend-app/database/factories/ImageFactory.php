@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PostFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,9 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
-            'title' => $this->faker->title(),
-            'content' => $this->faker->text(rand(20,50))
+            'url' => $this->faker->imageUrl(600,800)
         ];
     }
 }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use PhpParser\Node\Expr\AssignOp\Pow;
 
 class PostController extends Controller
 {
@@ -52,7 +55,21 @@ class PostController extends Controller
             foreach($data['categories'] as $category){
                 $post->categories()->attach([$category]);
             }
-            //if create success
+            $uploadFile = $request->file('image');
+            if ($uploadFile != null){
+                $file_name = $uploadFile->hashName();
+                $uploadFile->storeAs('public/images', $file_name);
+                $path = '/images/'.$file_name;
+                if(Image::insert([
+                    'imageable_id'=> $post->id,
+                    'imageable_type' => 'App\Models\Post',
+                    'url' => $path,
+                    "created_at" =>  \Carbon\Carbon::now(),
+                    "updated_at" => \Carbon\Carbon::now(),
+                ])){
+                    return ['message' => 'Create post successed'];
+                }
+            }
             return ['message' => 'Create post successed'];
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
@@ -69,6 +86,22 @@ class PostController extends Controller
     {
         //
         return $post->load('categories','comments');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function getPostByCategoryId(Category $category)
+    {
+        $category->load('posts');
+        // $post = Post::all()->load(array('categories' => function($query) use ($category){
+        //     $query->where('category_id',$category->id);
+        // }));
+        // return $post;
+        return $category;
     }
 
     /**

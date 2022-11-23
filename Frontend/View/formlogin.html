@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="scr.css">
+
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+        <title>Form login</title>
+    </head> 
+    
+    <title>
+
+    </title>
+    <body>
+        <div class="container">
+        <form id="frm1" method="post">
+            <b>管理者ログイン</b>
+            <p>
+              <label>アカウント</label>
+              <input type="text" class="txt" id="un" name="un" />
+            </p>
+            <p>
+              <label>パスワード</label>
+              <input type="password" class="txt" id="mk" name="mk" />
+              <i class="fas fa-eye" onclick="daoTT()" ></i>
+            </p>
+            <p>
+              
+                <button type="button" onclick="history.back()">キャンセル</button>
+               <button type="submit">ログイン</button>
+            </p>
+          </form>
+        </div> 
+        <script>
+            function daoTT() {
+                var mk = document.getElementById("mk");
+                mk.type = (mk.type === "password")? "text":"password";
+
+            }  
+            </script>
+    </body>
+</html>
