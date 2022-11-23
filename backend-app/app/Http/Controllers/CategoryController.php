@@ -45,18 +45,21 @@ class CategoryController extends Controller
                 'detail' => $data['detail']
             ]);
             $uploadFile = $request->file('image');
-            $file_name = $uploadFile->hashName();
-            $uploadFile->storeAs('public/images', $file_name);
-            $path = '/images/'.$file_name;
-            if(Image::insert([
-                'imageable_id'=> $category->id,
-                'imageable_type' => 'App\Models\Category',
-                'url' => $path,
-                "created_at" =>  \Carbon\Carbon::now(),
-                "updated_at" => \Carbon\Carbon::now(),
-            ])){
-                return ['message' => 'Create post successed'];
+            if ($uploadFile){
+                $file_name = $uploadFile->hashName();
+                $uploadFile->storeAs('public/images', $file_name);
+                $path = '/images/'.$file_name;
+                if(Image::insert([
+                    'imageable_id'=> $category->id,
+                    'imageable_type' => 'App\Models\Category',
+                    'url' => $path,
+                    "created_at" =>  \Carbon\Carbon::now(),
+                    "updated_at" => \Carbon\Carbon::now(),
+                ])){
+                    return ['message' => 'Create category successed'];
+                }
             }
+            return ['message' => 'Create category successed'];
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
         }

@@ -44,18 +44,21 @@ class CommentController extends Controller
                 'post_id' => $data['post_id']
             ]);
             $uploadFile = $request->file('image');
-            $file_name = $uploadFile->hashName();
-            $uploadFile->storeAs('public/images', $file_name);
-            $path = '/images/'.$file_name;
-            if(Image::insert([
-                'imageable_id'=> $comment->id,
-                'imageable_type' => 'App\Models\Comment',
-                'url' => $path,
-                "created_at" =>  \Carbon\Carbon::now(),
-                "updated_at" => \Carbon\Carbon::now(),
-            ])){
-                return ['message' => 'Create post successed'];
+            if ($uploadFile) {       
+                $file_name = $uploadFile->hashName();
+                $uploadFile->storeAs('public/images', $file_name);
+                $path = '/images/'.$file_name;
+                if(Image::insert([
+                    'imageable_id'=> $comment->id,
+                    'imageable_type' => 'App\Models\Comment',
+                    'url' => $path,
+                    "created_at" =>  \Carbon\Carbon::now(),
+                    "updated_at" => \Carbon\Carbon::now(),
+                ])){
+                    return ['message' => 'Create comment successed'];
+                }
             }
+            return ['message' => 'Create comment successed'];
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
         }
