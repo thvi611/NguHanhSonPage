@@ -11,7 +11,7 @@ export default function Filter({username,page}){
     const { user } = useContext(AuthContext);
 
     const fetchData = () => {
-        return fetch(`/tags/`)
+        return fetch(`http://localhost:8080/api/category`)
               .then((response) => response.json())
               .then((data) => setTags(data));
     }
@@ -21,11 +21,11 @@ export default function Filter({username,page}){
         const currentPage = localStorage.getItem('currentPage');
         if(currentPage=='home'){
             const filter = tags.map((tagObj) => (
-                <Link to="/feedPost/" state={{ tag: tagObj.id }}></Link>
+                <Link to="/feedPost/" state={{ tag: tagObj.id }}>{tagObj.name}</Link>
             ));
         }else{
             const filter = tags.map((tagObj) => (
-                <Link to="/feedGuide/" state={{ tag: tagObj.id }}></Link>
+                <Link to="/feedGuide/" state={{ tag: tagObj.id }}>{tagObj.name}</Link>
             ));
         }
     },[tags])

@@ -12,11 +12,11 @@ export default function FeedPost(){
     if(tag) tag='all';
     const fetchPosts = () => {
         if(!tag=='all'){
-            return fetch(`/guide/tag?id=${tag}`)
+            return fetch(`http://localhost:8080/api/guide/category/${tag}`)
               .then((response) => response.json())
               .then((data) => setPosts(data));
         }else{
-            return fetch(`/guide/`)
+            return fetch(`http://localhost:8080/api/guide`)
             .then((response) => response.json())
             .then((data) => setPosts(data));
         }

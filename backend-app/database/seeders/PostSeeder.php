@@ -36,7 +36,7 @@ class PostSeeder extends Seeder
             Comment::factory(rand(0,15))->create(['post_id' => $post->id]);
 
             $attach = $categories->shuffle();
-            for ($i=0; $i < rand(1,4); $i++) { 
+            for ($i=0; $i < rand(1,3); $i++) { 
                 $post->categories()->attach([
                     $attach[$i]->id
                 ]);
