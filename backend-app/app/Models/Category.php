@@ -26,4 +26,13 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+
+    /**
+     * Get all of the category's images.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
 }
