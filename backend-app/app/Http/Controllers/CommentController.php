@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -37,13 +38,24 @@ class CommentController extends Controller
     {
         $data = $request->only('post_id','name','content');
         try {
-            Comment::create([
+            $comment = Comment::create([
                 'name' => $data['name'],
                 'content' => $data['content'],
                 'post_id' => $data['post_id']
             ]);
-            //if create success
-            return ['message' => 'Create post successed'];
+            $uploadFile = $request->file('image');
+            $file_name = $uploadFile->hashName();
+            $uploadFile->storeAs('public/images', $file_name);
+            $path = '/images/'.$file_name;
+            if(Image::insert([
+                'imageable_id'=> $comment->id,
+                'imageable_type' => 'App\Models\Comment',
+                'url' => $path,
+                "created_at" =>  \Carbon\Carbon::now(),
+                "updated_at" => \Carbon\Carbon::now(),
+            ])){
+                return ['message' => 'Create post successed'];
+            }
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 424);
         }

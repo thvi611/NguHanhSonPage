@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -35,5 +36,13 @@ class CategorySeeder extends Seeder
                             Các sự kiện xảy ra trước khi được ghi chép lại được coi là thời tiền sử'
             ]
         ]);
+        $categories = Category::all();
+        $categories->each(function($category){
+            Image::factory(1)->create([
+                'imageable_id' => $category->id,
+                'imageable_type' => 'App\Models\Category',
+                // 'url' => 'images/categories' . basename($fakerFileName)
+            ]);
+        });
     }
 }

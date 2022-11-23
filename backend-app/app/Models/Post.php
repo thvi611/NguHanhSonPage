@@ -17,7 +17,6 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'image_path',
     ];
 
     /**
@@ -34,5 +33,13 @@ class Post extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    /**
+     * Get all of the post's images.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

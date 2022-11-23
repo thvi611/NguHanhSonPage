@@ -27,4 +27,12 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    /**
+     * Get all of the comment's images.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
