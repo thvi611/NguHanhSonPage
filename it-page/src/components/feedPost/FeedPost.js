@@ -9,8 +9,11 @@ import Post from "../post/Post";
 export default function FeedPost() {
     const [posts, setPosts] = useState([]);
     const location = useLocation()
-    const { tag } = location.state
-    if (tag) tag = 'all';
+    var tag = [];
+    if (location.state){
+        tag = location.state
+    }
+    if(tag) tag='all';
     useEffect(() => {
         const fetchPosts = async () => {
             if (!tag === 'all') {

@@ -23,9 +23,9 @@ export default function Filter({username,page}){
     },[tags])
     return(
         <div className="filter-search">
-            <div class="dropdown">
-                <button class="dropbtn">Lọc bài viết</button>
-                <div class="dropdown-content">
+            <div className="dropdown">
+                <button className="dropbtn">Lọc bài viết</button>
+                <div className="dropdown-content">
                     {tags.map((tagObj) =>{
                         if(currentPage==='home'){
                             return <Link to="/feedPost/" state={{ tag: tagObj.id }}>{tagObj.name}</Link>

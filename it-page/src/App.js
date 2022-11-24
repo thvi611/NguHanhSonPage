@@ -14,16 +14,19 @@ class App extends React.Component {
     super(props);
   }
   render() {
-    return(
-      <Routes>
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/" element={<Home />}>
-          <Route path="feedPost" element={<FeedPost />} />
-          <Route path="feedGuide" element={<FeedGuide />} />
-        </Route>
-        {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
-        {/* <Route path="/admin" element={<Admin/>}/> */}
-      </Routes>
+    return (
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/" element={<Home />}>
+            <Route path="/feedPost" element={<FeedPost />} />
+            <Route path="/feedGuide" element={<FeedGuide />} />
+          </Route>
+          {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
+          {/* <Route path="/admin" element={<Admin/>}/> */}
+          <Route path="/postDetail" element={<PostDetail/>}></Route>
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
