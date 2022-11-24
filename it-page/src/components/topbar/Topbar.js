@@ -1,10 +1,10 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+//import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-const { user } = useContext(AuthContext);
-const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+//import { useContext } from "react";
+//import { AuthContext } from "../../context/AuthContext";
+//const { user } = useContext(AuthContext);
+//const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
 export default function Topbar(){
     const clickHome = event =>{
@@ -32,7 +32,7 @@ export default function Topbar(){
             </div>
             <div className="new_post">
                 <Link to={`/addPost/`} style={{ textDecoration: "none" }}>
-                    <button type="button" class="btn btn-primary" style={{backgroundColor:rgb(29, 188, 250),width:40,height:40,marginTop:10,marginLeft:20}}>
+                    <button type="button" class="btn btn-primary" style={{backgroundColor:'rgb(29, 188, 250)',width:40,height:40,marginTop:10,marginLeft:20}}>
                         +
                     </button>
                 </Link>
