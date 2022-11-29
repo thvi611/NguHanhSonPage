@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import PostDetail from './Page/PostDetail/PostDetail';
 import CreatePost from './Page/CreatePost/CreatePost';
 import Home from "./pages/home/Home";
@@ -19,12 +19,16 @@ class App extends React.Component {
         <Routes>
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/" element={<Home />}>
+            <Route
+              path="/"
+              element={<Navigate to="/feedPost" replace />}
+            />
             <Route path="/feedPost" element={<FeedPost />} />
             <Route path="/feedGuide" element={<FeedGuide />} />
           </Route>
           {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
           {/* <Route path="/admin" element={<Admin/>}/> */}
-          <Route path="/postDetail" element={<PostDetail/>}></Route>
+          <Route path="/postDetail" element={<PostDetail />}></Route>
         </Routes>
       </BrowserRouter>
     );
