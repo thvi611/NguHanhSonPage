@@ -7,12 +7,12 @@ import { Outlet } from "react-router-dom";
 export default function Home() {
   return (
     <>
-      <Topbar />
-      {/* <SlideBar/> */}
+      <SlideBar/>
       <Filter/>
       <div className="homeContainer">
         <Outlet/>
       </div>
+      <Topbar />
     </>
   );
 }

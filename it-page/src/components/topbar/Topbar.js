@@ -7,25 +7,25 @@ import { Link } from "react-router-dom";
 //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
 export default function Topbar(){
-    const clickHome = event =>{
+    const clickHome = () =>{
         localStorage.setItem('currentPage','home');
     };
-    const clickGuide = event =>{
+    const clickGuide = () =>{
         localStorage.setItem('currentPage','guide');
     };
     return (
         <div className="topbarContainer">
-            <div className="home">
+            <div className="home but">
                 <Link to={`/feedPost/`} onClick={clickHome} style={{ textDecoration: "none" }}>
                     <span className="home" style={{marginLeft:40}}>Home</span>
                 </Link>
             </div>
-            <div className="advice">
+            <div className="advice but">
                 <Link to={`/feedGuide/`} onClick={clickGuide} style={{ textDecoration: "none" }}>
                     <span className="guide" style={{marginLeft:40}}>Hướng dẫn</span>
                 </Link>
             </div>
-            <div className="admin_page">
+            <div className="admin_page but left">
                 <Link to={`/admin/`} style={{ textDecoration: "none" }}>
                     <span className="adminPage" style={{marginLeft:30}}>Quản lý</span>
                 </Link>
@@ -37,7 +37,7 @@ export default function Topbar(){
                     </button>
                 </Link>
             </div>
-            <div className="logout">
+            <div className="logout but">
                 <Link to={`/login/`} style={{ textDecoration: "none" }}>
                     <span className="logout" style={{marginLeft:30}}>Logout</span>
                 </Link>

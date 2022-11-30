@@ -3,7 +3,7 @@
     width: 300px;
     margin-left: 25px;
     margin-top: 30px;
-    background-color: #d1d1d1;
+    background-color: #f9f9f9;
     border-radius: 5px;
 }
 
@@ -21,8 +21,21 @@
     text-align: center;
 }
 
-.post>.title>p {
-    text-align: center;
+.post>.title>a {
+    text-decoration: none;
+    margin: 10px 40px 0 10px;
     color: #2c2c31;
-    font-size: 1.5rem;
+    font-size: 1.0rem;
+    --max-lines: 1;
+    display: -webkit-box;
+    overflow: hidden;
+    --webkit-box-orient: vertical;
+    --webkit-line-clamp: var(var(--max-lines));
+}
+.cutoff-text{
+    --max-lines: 3;
+    display: -webkit-box;
+    overflow: hidden;
+    --webkit-box-orient: vertical;
+    --webkit-line-clamp: var(var(--max-lines));
 }
