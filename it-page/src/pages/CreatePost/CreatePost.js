@@ -5,11 +5,27 @@ export default class CreatePost extends Component {
     constructor(props) {
         super(props);
         this.state={
-            sortByDate :true
+            category: [],
         }
+    }
+
+    componentDidMount() {
+        fetch("hhttp://localhost:80/api/category")
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+                category: json
+            });
+        })
     }
     
     render() {
+        const Categories = this.state.category.map((category) => {
+            return (
+                <option value={category.id}>{category.name}</option>
+            );
+        });
+
         return (
             <div class="testbox">
                 <form action="/">
@@ -30,9 +46,7 @@ export default class CreatePost extends Component {
                     <div class="item">
                         <label for="title">Title<span>*</span></label>
                         <select required>
-                            <option value="guide">Guide</option>
-                            <option value="history">History</option>
-                            <option value="culture">Culture</option>
+                            {Categories}
                         </select>
                     </div>
                     <div class="item">
