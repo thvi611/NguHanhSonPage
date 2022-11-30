@@ -35,4 +35,12 @@ class Comment extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    /**
+     * Get the guide that owns the comment.
+     */
+    public function guides()
+    {
+        return $this->belongsTo(Guide::class);
+    }
 }
