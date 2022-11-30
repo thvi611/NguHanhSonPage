@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Guide;
 use App\Models\Image;
-use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use PhpParser\Node\Expr\AssignOp\Pow;
 
-class PostController extends Controller
+class GuideController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all()->load('categories');
-        return $posts;
+        $guides = Guide::all()->load('categories');
+        return $guides;
     }
 
     /**
@@ -47,7 +45,7 @@ class PostController extends Controller
             $data['image'] = null;
         }
         try {
-            $post = Post::create([
+            $post = Guide::create([
                 'title' => $data['title'],
                 'content' => $data['content'],
                 'image_path' => $data['image']
@@ -62,7 +60,7 @@ class PostController extends Controller
                 $path = '/images/'.$file_name;
                 if(Image::insert([
                     'imageable_id'=> $post->id,
-                    'imageable_type' => 'App\Models\Post',
+                    'imageable_type' => 'App\Models\Guide',
                     'url' => $path,
                     "created_at" =>  \Carbon\Carbon::now(),
                     "updated_at" => \Carbon\Carbon::now(),
@@ -82,10 +80,10 @@ class PostController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Guide $guide)
     {
         //
-        return $post->load('categories','comments');
+        return $guide->load('categories','comments');
     }
 
     /**
@@ -94,14 +92,14 @@ class PostController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function getPostByCategoryId(Category $category)
+    public function getGuideByCategoryId(Category $category)
     {
-        $category->load('posts');
+        $category->load('guides');
         // $post = Post::all()->load(array('categories' => function($query) use ($category){
         //     $query->where('category_id',$category->id);
         // }));
         // return $post;
-        return $category->posts;
+        return $category->guides;
     }
 
     /**
@@ -110,7 +108,7 @@ class PostController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Guide $guide)
     {
         //
     }
@@ -122,7 +120,7 @@ class PostController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Guide $guide)
     {
         //
     }
@@ -133,10 +131,10 @@ class PostController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Guide $guide)
     {
         //
-        $post->delete();
+        $guide->delete();
         return ['message' => 'Delete post Successed!'];
     }
 }
