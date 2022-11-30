@@ -35,4 +35,12 @@ class Category extends Model
         return $this->morphMany(Image::class, 'imageable');
     }
 
+    /**
+     * The categories that belong to the guide.
+     */
+    public function guides()
+    {
+        return $this->belongsToMany(Guide::class);
+    }
+
 }
