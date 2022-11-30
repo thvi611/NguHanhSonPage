@@ -45,9 +45,14 @@ export default function FeedPost() {
     }, [tag]);
     return (
         <div id="list-post">
-            {posts.map((p) => (
-                <Post key={p._id} post={p} />
-            ))}
+            {posts.map((p) => {
+                if(tag==="all"){
+                    <Post key={p.id} post={p} />
+                }
+                else{
+                    <Post key={p.posts.id} post={p.posts} />
+                }
+            })}
         </div>
     )
 }
