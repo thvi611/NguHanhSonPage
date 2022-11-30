@@ -16,7 +16,14 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
+        $categories = Category::all()->load('posts','guides');
+        // dd($categories->toArray());
+        // return $categories->posts;
+        // $categories = $categories->toArray();
+        $categories->each(function($category) {
+            $category->posts_count = count($category->posts);
+            $category->guides_count = count($category->guides);
+        });
         return $categories;
     }
 
