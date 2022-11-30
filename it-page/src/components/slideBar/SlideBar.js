@@ -1,31 +1,37 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { useContext, useEffect, useState } from "react";
-import axios from 'axios';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import Carousel from 'react-bootstrap/Carousel';
 
-export default function DemoCarousel() {
-    const[posts, setPosts] = useState([]);
+export default function SlideBar() {
+    const [posts, setPosts] = useState([]);
     const fetchData = async () => {
-        axios.get(`http://localhost:8080/api/post`)
-            .then(res => {
-                const data = res.data;
-                setPosts( data );
-            })
-            .catch(error => console.log(error));
+        const response = await fetch(`http://localhost:8080/api/post`);
+        const data = await response.json();
+        return setPosts(data);
     }
     useEffect(() => {
         fetchData();
     }, [])
+
     return (
-        <Carousel>
-            {posts.slice(0,5).map(p=>{
-                <div>
-                    <img alt="" src={p.image_path} />
-                    <p className="legend">{p.title}</p>
-                </div>
-            })}
+        <Carousel style={{marginTop:60}}>
+            {posts.slice(0, 5).map((p) => (
+                <Carousel.Item interval={5000}>
+                    <img
+                        className="d-block w-100"
+                        source={p.img_path}
+                        alt="Image One"
+                        style={{height: 200,width: "100%",backgroundColor:"green"}}
+                    />
+                    <Carousel.Caption>
+                        <Link to={`/postDetail/${p.id}`} style={{color:"black",textDecoration: "none",fontSize:30}}>
+                            {p.title}
+                        </Link>
+                        <p className=".cutoff-text" style={{color:"black"}}>{p.content}</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            ))}
         </Carousel>
     );
 }

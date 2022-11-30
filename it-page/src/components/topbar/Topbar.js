@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
 export default function Topbar(){
-    const clickHome = event =>{
+    const clickHome = () =>{
         localStorage.setItem('currentPage','home');
     };
-    const clickGuide = event =>{
+    const clickGuide = () =>{
         localStorage.setItem('currentPage','guide');
     };
     return (
