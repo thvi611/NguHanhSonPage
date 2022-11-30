@@ -1,28 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
-import {Routes,Route} from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import PostDetail from './Page/PostDetail/PostDetail';
 import CreatePost from './Page/CreatePost/CreatePost';
+import Home from "./pages/home/Home";
+//import Login from "./pages/login/Login";
+import FeedPost from './components/feedPost/FeedPost';
+import FeedGuide from './components/feedGuide/FeedGuide';
 
-function main () {
-  return (
-      <div>
-        <outlet/>
-
-      </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/" element={<Home />}>
+            <Route
+              path="/"
+              element={<Navigate to="/feedPost" replace />}
+            />
+            <Route path="/feedPost" element={<FeedPost />} />
+            <Route path="/feedGuide" element={<FeedGuide />} />
+          </Route>
+          {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
+          {/* <Route path="/admin" element={<Admin/>}/> */}
+          <Route path="/postDetail" element={<PostDetail />}></Route>
+        </Routes>
+      </BrowserRouter>
+    );
+  }
 }
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path = "/" element={<main/>}>
-            <Route path = "/login" element={<login/>}></Route>
-            <Route path = "/sign-up" element={<signup/>}></Route>
-        </Route>
-      </Routes>
-    </div>
-  );
-}
-
 export default App;

@@ -1,0 +1,42 @@
+#frm1 {
+    height: 100%;
+    position: relative;
+    background-color: aqua;
+     width: 400px; margin: auto; border: 2px solid darkslategrey; padding: 10px;text-align: center; }
+#frm1 label { color: darkslategray; width: 160px; display: inline-block;text-align: left; }
+#frm1 .txt { width: 170px; padding: 8px; border: 1px solid lightcoral; }
+#frm1 button { width: 100px; height: 35px; }
+.fas{
+    margin-left: -23px; 
+    cursor: pointer;
+}
+body{
+    height: 100%;
+    background: url('http://www.dulichmientrung.com.vn/uploads/cms/1497605304.jpg');
+    background-size: cover;
+    /* background-position-y: -80px; */
+    font-size: 16px;
+    vertical-align:middle;
+    
+}
+
+body, html {
+    
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display:table;
+}
+body {
+    display:table-cell;
+    vertical-align:middle;
+}
+form {
+    display:table;/* shrinks to fit conntent */
+    margin:auto;
+}
+.title-form{
+    font-size: 22px;
+    padding: 2px;
+}
