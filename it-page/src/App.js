@@ -26,8 +26,8 @@ class App extends React.Component {
           {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
           {/* <Route path="/admin" element={<Admin/>}/> */}
           <Route path="/postDetail" element={<PostDetail />}></Route>
+          <Route path="/createPost" element={<CreatePost />}></Route>
         </Routes>
-        <PostDetail></PostDetail>
       </BrowserRouter>
     );
   }
