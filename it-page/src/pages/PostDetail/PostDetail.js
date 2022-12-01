@@ -6,6 +6,7 @@ import './PostDetail.css';
 export default function PostDetail() {
     const [post, setPost] = useState([]);
     const [comments, setComments] = useState([]);
+    const [images, setImages] = useState([]);
     const name = useRef();
     const content = useRef();
 
@@ -13,7 +14,7 @@ export default function PostDetail() {
         const fetchPost = async () => {
             const response = await fetch(`http://localhost:80/api/post/1`);
             const data = await response.json();
-            return (setPost(data), setComments(data.comments));
+            return (setPost(data), setComments(data.comments), setImages(data.images));
         }
         fetchPost();
     });
@@ -48,19 +49,15 @@ export default function PostDetail() {
         name.current.value = "";
         content.current.value = "";
       };
-
-    // handleClick() {
-    //     fetch('http://localhost:8080/api/comment', {
-    //       method: 'POST', 
-    //       mode: 'cors', 
-    //       body: JSON.stringify(this.addComment)
-    //     })
-    // }
     
     return(
             <div id="main">
                 <div id="post">
-                    <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/Nui-Ngu-Hanh-Son.png" alt=''/>
+                    <div className="d-flex justify-content-between">
+                        {images.map((image) => (
+                            <img src={image.url} alt=''/>
+                        ))}
+                    </div>
                     {renderPost(post)}
                 </div>
                 <div id="comment">
