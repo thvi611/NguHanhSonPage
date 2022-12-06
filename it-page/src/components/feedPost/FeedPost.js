@@ -17,26 +17,14 @@ export default function FeedPost() {
     }
     useEffect(() => {
         const fetchPosts = async () => {
-            if (!tag === 'all') {
-                const response = await fetch(`http://localhost:8080/api/post/category/${tag}`);
-                const data = await response.json();
-                return setPosts(data);
-                // axios.get(`http://localhost:8080/api/post/category/${tag}`)
-                //     .then(res => {
-                //         const data = res.data;
-                //         setPosts(data);
-                //     })
-                //     .catch(error => console.log(error));
-            } else {
+            if (tag === 'all') {
                 const response = await fetch('http://localhost:8080/api/post');
                 const data = await response.json();
                 return setPosts(data);
-                // axios.get(`http://localhost:8080/api/post`)
-                //     .then(res => {
-                //         const data = res.data;
-                //         setPosts(data);
-                //     })
-                //     .catch(error => console.log(error));
+            } else {
+                const response = await fetch(`http://localhost:8080/api/post/category/${tag}`);
+                const data = await response.json();
+                return setPosts(data);
             }
         }
         console.log(tag);

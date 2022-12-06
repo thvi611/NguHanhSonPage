@@ -83,7 +83,7 @@ class GuideController extends Controller
     public function show(Guide $guide)
     {
         //
-        return $guide->load('categories','comments');
+        return $guide->load('categories','comments','images');
     }
 
     /**

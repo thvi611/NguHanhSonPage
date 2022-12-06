@@ -17,18 +17,18 @@ export default function SlideBar() {
     return (
         <Carousel style={{marginTop:60}}>
             {posts.slice(0, 5).map((p) => (
-                <Carousel.Item interval={5000}>
+                <Carousel.Item interval={5000} key={p.id}>
                     <img
                         className="d-block w-100"
-                        source={p.img_path}
+                        source={p.images.url}
                         alt="Image One"
-                        style={{height: 200,width: "100%",backgroundColor:"green"}}
+                        style={{height: 200,width: "100%",objectFit:"cover",backgroundColor:"green"}}
                     />
                     <Carousel.Caption>
                         <Link to={`/postDetail/${p.id}`} style={{color:"black",textDecoration: "none",fontSize:30}}>
                             {p.title}
                         </Link>
-                        <p className=".cutoff-text" style={{color:"black"}}>{p.content}</p>
+                        <p className="cutoff-text" style={{color:"black"}}>{p.content}</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             ))}
