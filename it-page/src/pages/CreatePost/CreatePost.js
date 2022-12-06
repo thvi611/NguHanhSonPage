@@ -1,67 +1,55 @@
-import React, { Component } from 'react'
-import './CreatePost.css'
+import React from 'react';
+import axios from "axios";
+import { useRef, useEffect, useState } from "react";
+import './CreatePost.css';
 
-export default class CreatePost extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            category: [],
-        }
-    }
-
-    componentDidMount() {
-        fetch("hhttp://localhost:80/api/category")
-        .then((res) => res.json())
-        .then((json) => {
-            this.setState({
-                category: json
-            });
-        })
-    }
+export default function CreatePost() {
+    const [categories, setCategories] = useState([]);
+    const title = useRef();
+    const content = useRef();
+    const category = useRef();
+    const image = useRef();
     
-    render() {
-        const Categories = this.state.category.map((category) => {
-            return (
-                <option value={category.id}>{category.name}</option>
-            );
-        });
+    useEffect(() => {
+        const fetchCategories = async () => {
+            const response = await fetch(`http://localhost:80/api/category`);
+            const data = await response.json();
+            return (setCategories(data));
+        }
+        fetchCategories();
+    });
 
-        return (
-            <div class="testbox">
-                <form action="/">
-                    <div class="item">
-                        <label for="banner">Banner<span>*</span></label>
-                    </div>
-                    <div class="banner">
-                        <button class="plus-button plus-button--large"></button>
-                    </div>
-                    <div class="item">
+    const handleClick = async (e) => {
+       
+      };
+    
+    return(
+            <div className="testbox">
+                <form onSubmit={handleClick}>
+                    <div className="item">
                         <label for="title">Title<span>*</span></label>
-                        <input id="title" type="text" name="title" required/>
+                        <input id="title" type="text" ref={title} required/>
                     </div>
-                    <div class="item">
+                    <div className="item">
                         <label for="content">Content<span>*</span></label>
-                        <textarea rows="10"></textarea>
+                        <textarea rows="10" ref={content}></textarea>
                     </div>
-                    <div class="item">
-                        <label for="title">Title<span>*</span></label>
-                        <select required>
-                            {Categories}
+                    <div className="item">
+                        <label for="title">Category<span>*</span></label>
+                        <select required ref={category}>
+                            {categories.map((category) => (
+                                <option value={category.id}>{category.name}</option>
+                            ))}
                         </select>
                     </div>
-                    <div class="item">
-                        <label for="picture">Upload Picture</label>
-                        <input id="picture" type="file" multiple/>
-                    </div>
-                    <div class="item">
+                    <div className="item">
                         <label for="video">Upload Picture</label>
-                        <input  id="video" type="file" multiple/>
+                        <input  id="video" type="file" multiple="false" ref={image}/>
                     </div>
-                    <div class="btn-block">
+                    <div className="btn-block">
                         <button type="submit" href="/">SUBMIT</button>
                     </div>
                 </form>
             </div>
-        )
-    }
+    )
 }
