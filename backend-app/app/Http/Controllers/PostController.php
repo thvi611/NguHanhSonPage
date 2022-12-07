@@ -50,7 +50,7 @@ class PostController extends Controller
             $post = Post::create([
                 'title' => $data['title'],
                 'content' => $data['content'],
-                'image_path' => $data['image']
+                // 'image_path' => $data['image']
             ]);
             foreach($data['categories'] as $category){
                 $post->categories()->attach([$category]);

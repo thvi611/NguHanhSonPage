@@ -12,7 +12,7 @@ export default function PostDetail() {
 
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/post/1`);
+            const response = await fetch(`http://localhost:80/api/post/24`);
             const data = await response.json();
             return (setPost(data), setComments(data.comments), setImages(data.images));
         }

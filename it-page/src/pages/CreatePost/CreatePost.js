@@ -20,7 +20,19 @@ export default function CreatePost() {
     });
 
     const handleClick = async (e) => {
-       
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("title", title.current.value);
+        formData.append("content", content.current.value);
+        formData.append("categories[0]", category.current.value);
+        formData.append("image", image.current.value);
+        try {
+            const resp = await axios.post("http://localhost:80/api/post", formData);
+            console.log(resp.status === 200 ? "Thank you!" : "Error.");
+        } catch (err) {
+            console.log(err);
+        }
+        
       };
     
     return(
@@ -44,10 +56,10 @@ export default function CreatePost() {
                     </div>
                     <div className="item">
                         <label for="video">Upload Picture</label>
-                        <input  id="video" type="file" multiple="false" ref={image}/>
+                        <input  id="video" type="file" multiple ref={image}/>
                     </div>
                     <div className="btn-block">
-                        <button type="submit" href="/">SUBMIT</button>
+                        <button type="submit">SUBMIT</button>
                     </div>
                 </form>
             </div>
