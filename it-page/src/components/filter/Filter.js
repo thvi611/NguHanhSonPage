@@ -16,15 +16,6 @@ export default function Filter({ username, page }) {
         const data = await response.json();
         return setTags(data);
     }
-    // const fetchData = async () => {
-    //     axios.get(`http://localhost:8080/api/category`)
-    //         .then(res => {
-    //             const data = res.data;
-    //             setTags( data );
-    //         })
-    //         .catch(error => console.log(error));
-    // }
-
     useEffect(() => {
         fetchData();
     }, [currentPage])
@@ -36,10 +27,12 @@ export default function Filter({ username, page }) {
                     {tags.map((tagObj) => {
                         if (currentPage === 'home') {
                             localStorage.setItem('tag',tagObj.id);
-                            return <Link to="/feedPost/" state={{ tag: tagObj.id }}>{tagObj.name}</Link>
-                        } else {
+                            localStorage.setItem('currentPage','home');
+                            return <Link to="/feedPost/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>
+                        } else if(currentPage === 'guide') {
                             localStorage.setItem('tag',tagObj.id);
-                            return <Link to="/feedGuide/" state={{ tag: tagObj.id }}>{tagObj.name}</Link>
+                            localStorage.setItem('currentPage','guide');
+                            return <Link to="/feedGuide/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>
                         }
                     })}
                 </div>

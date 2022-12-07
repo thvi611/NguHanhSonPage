@@ -1,13 +1,12 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import PostDetail from "./pages/PostDetail/PostDetail"
 import CreatePost from './pages/CreatePost/CreatePost';
-import SlideBar from './components/slideBar/SlideBar';
 import Home from "./pages/home/Home";
 //import Login from "./pages/login/Login";
 import FeedPost from './components/feedPost/FeedPost';
 import FeedGuide from './components/feedGuide/FeedGuide';
-import PostDetail from './pages/PostDetail/PostDetail';
 
 class App extends React.Component {
   render() {
