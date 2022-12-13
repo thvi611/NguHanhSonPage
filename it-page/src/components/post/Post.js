@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Post({post}){
     return(
         <div className="post">
-            <img className="post-img" alt="" src={post.images[0].url}/>
+            <img className="post-img" alt="" src={post.images_path}/>
             <div className="title">
                 <Link to={`/postDetail/${post.id}`}>
                     {post.title}

@@ -20,7 +20,7 @@ export default function SlideBar() {
                 <Carousel.Item interval={5000} key={p.id}>
                     <img
                         className="d-block w-100"
-                        source={p.images.url}
+                        source={p.images_path}
                         alt="Image One"
                         style={{height: 200,width: "100%",objectFit:"cover",backgroundColor:"green"}}
                     />

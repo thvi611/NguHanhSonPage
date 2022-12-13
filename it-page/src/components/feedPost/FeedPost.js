@@ -9,7 +9,8 @@ import Post from "../post/Post";
 export default function FeedPost() {
     const [posts, setPosts] = useState([]);
     const location = useLocation()
-    var tag;
+    var tag ="all";
+    localStorage.setItem('currentPage','home');
     if (location.state){
         tag = location.state.tag;
     }else{
