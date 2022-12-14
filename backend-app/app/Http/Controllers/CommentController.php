@@ -36,13 +36,30 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only('post_id','name','content');
+        $data = $request->only('guide_id','post_id','name','content');
         try {
-            $comment = Comment::create([
-                'name' => $data['name'],
-                'content' => $data['content'],
-                'post_id' => $data['post_id']
-            ]);
+            if (isset($data['post_id'])){
+                if ($data['post_id'] != null){
+                    $data['guide_id'] = null;
+                    $comment = Comment::create([
+                        'name' => $data['name'],
+                        'content' => $data['content'],
+                        'post_id' => $data['post_id'],
+                        'guide_id' => $data['guide_id']
+                    ]);
+                }
+            }
+            if (isset($data['guide_id'])){
+                if ($data['guide_id'] != null) {
+                    $data['post_id'] = null;
+                    $comment = Comment::create([
+                        'name' => $data['name'],
+                        'content' => $data['content'],
+                        'post_id' => $data['post_id'],
+                        'guide_id' => $data['guide_id']
+                    ]);
+                }
+            }
             $uploadFile = $request->file('image');
             if ($uploadFile) {       
                 $file_name = $uploadFile->hashName();
