@@ -34,7 +34,7 @@ export default function FeedPost() {
     return (
         <div id="list-post">
             {posts.map((p) => (
-                <Post key={p.id} post={p} type="post" />
+                <Post key={p.id} post={p} type={'post'} />
             ))}
         </div>
     )

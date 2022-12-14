@@ -10,7 +10,6 @@ export default function FeedPost(){
     const [posts,setPosts] = useState([]);
     const location = useLocation()
     var tag ="all";
-    var type = "guide";
     localStorage.setItem('currentPage','guide');
     if (location.state){
         tag = location.state.tag;
@@ -35,7 +34,7 @@ export default function FeedPost(){
     return(
         <div id="list-guide">
             {posts.map((p) => (
-                <Post key={p.id} post={p} type={type}/>
+                <Post key={p.id} post={p} type={'guide'}/>
             ))}
         </div>
     );
