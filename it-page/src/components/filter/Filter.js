@@ -18,22 +18,20 @@ export default function Filter({ username, page }) {
     }
     useEffect(() => {
         fetchData();
-    }, [currentPage])
+    }, [localStorage.getItem('currentPage')])
     return (
         <div className="filter-search">
             <div className="dropdown">
                 <button className="dropbtn">Lọc bài viết</button>
                 <div className="dropdown-content">
                     {tags.map((tagObj) => {
-                        if (currentPage === 'home') {
-                            localStorage.setItem('tag',tagObj.id);
+                        if (localStorage.getItem('currentPage') === 'home') {
                             localStorage.setItem('currentPage','home');
-                            return <Link to="/feedPost/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>
-                        } else if(currentPage === 'guide') {
-                            localStorage.setItem('tag',tagObj.id);
+                            return (<Link to="/feedPost/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>);
+                        } else if(localStorage.getItem('currentPage') === 'guide') {
                             localStorage.setItem('currentPage','guide');
-                            return <Link to="/feedGuide/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>
-                        }
+                            return (<Link to="/feedGuide/" state={{ tag: tagObj.id }} key={tagObj.id}>{tagObj.name}</Link>);
+                        }else return null;
                     })}
                 </div>
             </div>

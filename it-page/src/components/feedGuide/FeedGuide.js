@@ -9,7 +9,8 @@ import Post from "../post/Post";
 export default function FeedPost(){
     const [posts,setPosts] = useState([]);
     const location = useLocation()
-    var tag ;
+    var tag ="all";
+    localStorage.setItem('currentPage','guide');
     if (location.state){
         tag = location.state.tag;
     }else{
@@ -17,12 +18,21 @@ export default function FeedPost(){
     }
     useEffect(() => {
         const fetchPosts = async () => {
+<<<<<<< HEAD
             if(!tag==='all'){
                 const response = await fetch(`http://localhost:80/api/guide/category/${tag}`);
                 const data = await response.json();
                 return setPosts(data);
             }else{
                 const response = await fetch(`http://localhost:80/api/guide`);
+=======
+            if (tag === 'all') {
+                const response = await fetch('http://localhost:8080/api/guide');
+                const data = await response.json();
+                return setPosts(data);
+            } else {
+                const response = await fetch(`http://localhost:8080/api/guide/category/${tag}`);
+>>>>>>> f6caf811fb47680bebbe003adad93a384e38adc9
                 const data = await response.json();
                 return setPosts(data);
             }
@@ -33,7 +43,7 @@ export default function FeedPost(){
     return(
         <div id="list-guide">
             {posts.map((p) => (
-                <Post key={p._id} post={p} />
+                <Post key={p.id} post={p} />
             ))}
         </div>
     );

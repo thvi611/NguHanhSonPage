@@ -30,9 +30,13 @@ export default function Post({post}){
 
     return(
         <div className="post">
+<<<<<<< HEAD
             {images.map((image) => (
                 renderImage(image)
             ))}
+=======
+            <img className="post-img" alt="" src={post.images_path}/>
+>>>>>>> f6caf811fb47680bebbe003adad93a384e38adc9
             <div className="title">
                 <Link to={`/postDetail/${post.id}`}>
                     {post.title}

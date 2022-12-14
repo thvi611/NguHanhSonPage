@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import CreatePost from './pages/CreatePost/CreatePost';
 import SlideBar from './components/slideBar/SlideBar';
 import Home from "./pages/home/Home";
-//import Login from "./pages/login/Login";
+import Login from "./pages/login/Login";
 import FeedPost from './components/feedPost/FeedPost';
 import FeedGuide from './components/feedGuide/FeedGuide';
 import PostDetail from './pages/PostDetail/PostDetail';
@@ -14,7 +14,6 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/" element={<Home />}>
             <Route
               path="/"
@@ -23,8 +22,7 @@ class App extends React.Component {
             <Route path="/feedPost" element={<FeedPost />} />
             <Route path="/feedGuide" element={<FeedGuide />} />
           </Route>
-          {/* bỏ đường dẫn với component hoặc page tương ứng vào, t để ví dụ thôi */}
-          {/* <Route path="/admin" element={<Admin/>}/> */}
+          <Route path="/login" element={<Login />}></Route>
           <Route path="/postDetail/:id" element={<PostDetail />}></Route>
           <Route path="/createPost" element={<CreatePost />}></Route>
         </Routes>
