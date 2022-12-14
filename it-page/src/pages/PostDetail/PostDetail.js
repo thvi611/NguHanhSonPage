@@ -12,11 +12,11 @@ export default function PostDetail() {
     const name = useRef();
     const content = useRef();
 
-    const { id } = useParams();
+    const { id, type } = useParams();
 
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/post/${id}`);
+            const response = await fetch(`http://localhost:80/api/${type}/${id}`);
             const data = await response.json();
             return (setPost(data), setComments(data.comments), setImages(data.images));
         }

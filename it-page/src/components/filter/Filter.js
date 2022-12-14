@@ -2,6 +2,7 @@ import "./filter.css";
 //import { Search} from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {FaFilter} from "react-icons/fa"
 //import { AuthContext } from "../../context/AuthContext";
 //const { user } = useContext(AuthContext);
 //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -22,7 +23,7 @@ export default function Filter({ username, page }) {
     return (
         <div className="filter-search">
             <div className="dropdown">
-                <button className="dropbtn">Lọc bài viết</button>
+                <button className="dropbtn"><FaFilter/></button>
                 <div className="dropdown-content">
                     {tags.map((tagObj) => {
                         if (localStorage.getItem('currentPage') === 'home') {

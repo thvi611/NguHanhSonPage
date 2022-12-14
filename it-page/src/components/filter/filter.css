@@ -6,10 +6,11 @@
 .dropbtn {
     background-color: #04AA6D;
     color: white;
-    width: 160px;
+    width: max-content;
     padding: 16px;
     font-size: 16px;
     border: none;
+    border-radius: 0;
 }
 
 .dropdown {

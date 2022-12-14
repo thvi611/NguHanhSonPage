@@ -23,7 +23,7 @@ class App extends React.Component {
             <Route path="/feedGuide" element={<FeedGuide />} />
           </Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/postDetail/:id" element={<PostDetail />}></Route>
+          <Route path="/postDetail/:type/:id" element={<PostDetail />}></Route>
           <Route path="/createPost" element={<CreatePost />}></Route>
         </Routes>
       </BrowserRouter>
