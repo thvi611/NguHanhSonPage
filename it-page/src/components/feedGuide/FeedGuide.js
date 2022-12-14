@@ -18,11 +18,11 @@ export default function FeedPost(){
     useEffect(() => {
         const fetchPosts = async () => {
             if(!tag==='all'){
-                const response = await fetch(`http://localhost:8080/api/guide/category/${tag}`);
+                const response = await fetch(`http://localhost:80/api/guide/category/${tag}`);
                 const data = await response.json();
                 return setPosts(data);
             }else{
-                const response = await fetch(`http://localhost:8080/api/guide`);
+                const response = await fetch(`http://localhost:80/api/guide`);
                 const data = await response.json();
                 return setPosts(data);
             }

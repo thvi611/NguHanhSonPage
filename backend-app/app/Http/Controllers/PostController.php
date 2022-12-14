@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all()->load('categories');
+        $posts = Post::all()->load('categories','images');
         return $posts;
     }
 

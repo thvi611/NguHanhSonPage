@@ -31,7 +31,7 @@ export default function Topbar(){
                 </Link>
             </div>
             <div className="new_post">
-                <Link to={`/addPost/`} style={{ textDecoration: "none" }}>
+                <Link to={`/createPost/`} style={{ textDecoration: "none" }}>
                     <button type="button" className="btn btn-primary" style={{backgroundColor:'rgb(29, 188, 250)',width:40,height:40,marginTop:10,marginLeft:20}}>
                         +
                     </button>

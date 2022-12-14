@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { useRef, useEffect, useState } from "react";
+import {useParams} from "react-router-dom";
+import { useRef, useEffect, useState} from "react";
 import './PostDetail.css';
+import {FaPencilAlt, FaTrashAlt} from "react-icons/fa"
 
 export default function PostDetail() {
     const [post, setPost] = useState([]);
@@ -10,14 +12,16 @@ export default function PostDetail() {
     const name = useRef();
     const content = useRef();
 
+    const { id } = useParams();
+
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/post/24`);
+            const response = await fetch(`http://localhost:80/api/post/${id}`);
             const data = await response.json();
             return (setPost(data), setComments(data.comments), setImages(data.images));
         }
         fetchPost();
-    });
+    }, []);
 
     const renderPost = (post) => {
         if (post != null)
@@ -38,7 +42,7 @@ export default function PostDetail() {
         const comment = {
             name: name.current.value,
             content: content.current.value,
-            post_id: 1,
+            post_id: id,
             image: '',
         };
         try {
@@ -48,14 +52,35 @@ export default function PostDetail() {
         }
         name.current.value = "";
         content.current.value = "";
+        const fetchPost = async () => {
+            const response = await fetch(`http://localhost:80/api/post/${id}`);
+            const data = await response.json();
+            return (setComments(data.comments));
+        }
+        fetchPost();
       };
+
+    const renderImage = (image) => {
+        if (image.url.includes("/images/"))
+            return(
+                <img src={"http://localhost:80/storage" + image.url} alt=''/>
+            );
+        else
+            return(
+                <img src={image.url} alt=''/>
+            );
+    }
     
     return(
             <div id="main">
+                <div className='d-flex justify-content-end' id="quanly">
+                    <button className='btn btn-secondary update'><FaPencilAlt/></button>
+                    <button className='btn btn-danger'><FaTrashAlt/></button>
+                </div>
                 <div id="post">
                     <div className="d-flex justify-content-between">
                         {images.map((image) => (
-                            <img src={image.url} alt=''/>
+                            renderImage(image)
                         ))}
                     </div>
                     {renderPost(post)}

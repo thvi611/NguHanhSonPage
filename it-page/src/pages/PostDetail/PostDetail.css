@@ -17,6 +17,14 @@ body {
     background-color: rgb(27, 206, 146);
 }
 
+#quanly{
+    margin-right: 120px;
+}
+
+.update{
+    margin-right: 10px;
+}
+
 #post {
     min-height: 400px;
     height: auto;

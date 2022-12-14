@@ -17,7 +17,7 @@ class GuideController extends Controller
     public function index()
     {
         //
-        $guides = Guide::all()->load('categories');
+        $guides = Guide::all()->load('categories','images');
         return $guides;
     }
 
