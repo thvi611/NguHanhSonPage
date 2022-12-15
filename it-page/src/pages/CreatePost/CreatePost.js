@@ -9,6 +9,7 @@ export default function CreatePost() {
     const title = useRef();
     const content = useRef();
     const category = useRef();
+    const type = useRef();
     const [image, setImage] = useState('');
     const navigate = useNavigate();
 
@@ -33,7 +34,7 @@ export default function CreatePost() {
         formData.append("categories[0]", category.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post("http://localhost:80/api/post", formData);
+            const resp = await axios.post(`http://localhost:80/api/${type.current.value}`, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {
@@ -44,6 +45,13 @@ export default function CreatePost() {
     return(
             <div className="testbox">
                 <form onSubmit={handleClick}>
+                     <div className="item">
+                        <label for="title">Type<span>*</span></label>
+                        <select required ref={type}>
+                            <option value="guide">Guide</option>
+                            <option value="guide">Post</option>
+                        </select>
+                    </div>
                     <div className="item">
                         <label for="title">Title<span>*</span></label>
                         <input id="title" type="text" ref={title} required/>

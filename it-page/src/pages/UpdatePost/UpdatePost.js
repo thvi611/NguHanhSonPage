@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import './UpdatePost.css';
 
 export default function UpdatePost() {
-    const [categories, setCategories] = useState([]);
     const title = useRef();
     const content = useRef();
     const category = useRef();
@@ -16,17 +15,11 @@ export default function UpdatePost() {
     const { id, type } = useParams();
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            const response = await fetch(`http://localhost:80/api/category`);
-            const data = await response.json();
-            return (setCategories(data));
-        }
-        fetchCategories();
         if (id && type){
             const fetchPost = async () => {
                 const response = await fetch(`http://localhost:80/api/${type}/${id}`);
                 const data = await response.json();
-                return (title.current.value = data.title, content.current.value = data.content, category.current.value = data.categories[0].id, setImage(data.images[0]));
+                return (title.current.value = data.title, content.current.value = data.content, setImage(data.images[0]));
             }
             fetchPost();
         }
@@ -41,10 +34,9 @@ export default function UpdatePost() {
         const formData = new FormData();
         formData.append("title", title.current.value);
         formData.append("content", content.current.value);
-        formData.append("categories[0]", category.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post("http://localhost:80/api/post", formData);
+            const resp = await axios.post(`http://localhost:80/api/${type}/${id}`, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {
@@ -68,14 +60,6 @@ export default function UpdatePost() {
                     <div className="item">
                         <label for="content">Content<span>*</span></label>
                         <textarea rows="10" ref={content}></textarea>
-                    </div>
-                    <div className="item">
-                        <label for="title">Category<span>*</span></label>
-                        <select required ref={category}>
-                            {categories.map((category) => (
-                                <option value={category.id}>{category.name}</option>
-                            ))}
-                        </select>
                     </div>
                     { image.id ? renderImage() : null }
                     <div className="item">
