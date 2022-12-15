@@ -23,7 +23,7 @@ export default function SlideImg({post, type}){
             return(
                 <img
                     className="d-block w-100"
-                    src={"http://localhost:80/storage" + image.url}
+                    src={"https://ff53-1-53-200-28.ap.ngrok.io/storage" + image.url}
                     alt="Image One"
                     style={{height: 200,width: "100%",objectFit:"cover",backgroundColor:"green"}}
                 />
