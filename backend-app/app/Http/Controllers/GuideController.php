@@ -94,7 +94,7 @@ class GuideController extends Controller
      */
     public function getGuideByCategoryId(Category $category)
     {
-        $category->load('guides');
+        $category->load('guides.images');;
         // $post = Post::all()->load(array('categories' => function($query) use ($category){
         //     $query->where('category_id',$category->id);
         // }));
@@ -123,6 +123,17 @@ class GuideController extends Controller
     public function update(Request $request, Guide $guide)
     {
         //
+        $guide->title = $request->title;
+        $guide->content = $request->content;
+        $uploadFile = $request->file('image');
+        if ($uploadFile != null){
+            $file_name = $uploadFile->hashName();
+            $uploadFile->storeAs('public/images', $file_name);
+            $path = '/images/'.$file_name;
+            $guide->images->url = $path;
+        }
+        $guide->save();
+        return $guide->load('categories','comments','images');
     }
 
     /**
