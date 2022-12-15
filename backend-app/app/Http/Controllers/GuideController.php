@@ -123,6 +123,7 @@ class GuideController extends Controller
     public function update(Request $request, Guide $guide)
     {
         //
+        $guide->load('categories','comments','images');
         $guide->title = $request->title;
         $guide->content = $request->content;
         $uploadFile = $request->file('image');
@@ -130,10 +131,12 @@ class GuideController extends Controller
             $file_name = $uploadFile->hashName();
             $uploadFile->storeAs('public/images', $file_name);
             $path = '/images/'.$file_name;
-            $guide->images->url = $path;
+            $image = Image::where('imageable_id', $guide->id)->where('imageable_type','App\Models\Guide')->get();
+            $image[0]->url = $path;
+            $image[0]->save();
         }
         $guide->save();
-        return $guide->load('categories','comments','images');
+        return $guide;
     }
 
     /**

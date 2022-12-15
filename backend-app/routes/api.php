@@ -49,4 +49,5 @@ Route::get('/guide', [GuideController::class, 'index']);
 Route::get('/guide/{guide}', [GuideController::class, 'show']);
 Route::get('/guide/category/{category}', [GuideController::class, 'getGuideByCategoryId']);
 Route::post('/guide', [GuideController::class, 'store']);
+Route::post('/guide/{guide}', [GuideController::class, 'update']);
 Route::delete('/guide/{guide}', [GuideController::class, 'destroy']);
