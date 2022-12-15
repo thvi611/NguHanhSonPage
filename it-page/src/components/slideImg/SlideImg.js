@@ -48,7 +48,7 @@ export default function SlideImg({post}){
                 <Link to={`/postDetail/${post.id}`} style={{color:"white",textDecoration: "none",fontSize:30}}>
                     {post.title}
                 </Link>
-                <post className="cutoff-text" style={{color:"white"}}>{post.content}</post>
+                <p className="cutoff-text" style={{color:"white"}}>{post.content}</p>
             </Carousel.Caption>
         </div>
     );

@@ -7,7 +7,7 @@ import {FaPencilAlt, FaTrashAlt} from "react-icons/fa";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Comment from "../../components/comment/Comment";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function PostDetail() {
     const [post, setPost] = useState([]);
@@ -121,7 +121,9 @@ export default function PostDetail() {
     return(
             <div id="main">
                 <div className='d-flex justify-content-end' id="quanly">
-                    <button className='btn btn-secondary update'><FaPencilAlt/></button>
+                    <Link to={`/updatePost/${type}/${post.id}`} style={{ textDecoration: "none" }}>
+                        <button className='btn btn-secondary update'><FaPencilAlt/></button>
+                    </Link>
                     <button className='btn btn-danger m-0' onClick={confirmDelete}><FaTrashAlt/></button>
                 </div>
                 <div id="post">

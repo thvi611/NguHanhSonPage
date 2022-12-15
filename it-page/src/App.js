@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import CreatePost from './pages/CreatePost/CreatePost';
+import UpdatePost from './pages/UpdatePost/UpdatePost';
 import SlideBar from './components/slideBar/SlideBar';
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/postDetail/:type/:id" element={<PostDetail />}></Route>
           <Route path="/createPost" element={<CreatePost />}></Route>
+          <Route path="/updatePost/:type/:id" element={<UpdatePost />}></Route>
         </Routes>
       </BrowserRouter>
     );
