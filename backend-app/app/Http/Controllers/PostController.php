@@ -125,7 +125,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
-        // dd($request->toArray());
+        $post->load('categories','comments','images');
         $post->title = $request->title;
         $post->content = $request->content;
         $uploadFile = $request->file('image');
@@ -133,10 +133,10 @@ class PostController extends Controller
             $file_name = $uploadFile->hashName();
             $uploadFile->storeAs('public/images', $file_name);
             $path = '/images/'.$file_name;
-            $post->images->url = $path;
+            $post->images[0]->url = $path;
         }
         $post->save();
-        return $post->load('categories','comments','images');
+        return $post;
     }
 
     /**
