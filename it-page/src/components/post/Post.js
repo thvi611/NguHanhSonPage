@@ -20,7 +20,7 @@ export default function Post({post, type}){
     const renderImage = (image) => {
         if (image.url.includes("/images/"))
             return(
-                <img className="post-img" src={"http://localhost:80/storage" + image.url} alt=''/>
+                <img className="post-img" src={"https://88f6-1-53-200-28.ap.ngrok.io/storage" + image.url} alt=''/>
             );
         else
             return(

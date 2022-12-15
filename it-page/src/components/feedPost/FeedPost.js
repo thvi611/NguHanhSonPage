@@ -19,11 +19,11 @@ export default function FeedPost() {
     useEffect(() => {
         const fetchPosts = async () => {
             if (tag === 'all') {
-                const response = await fetch('http://localhost:80/api/post');
+                const response = await fetch('https://88f6-1-53-200-28.ap.ngrok.io/api/post');
                 const data = await response.json();
                 return setPosts(data);
             } else {
-                const response = await fetch(`http://localhost:80/api/post/category/${tag}`);
+                const response = await fetch(`https://88f6-1-53-200-28.ap.ngrok.io/api/post/category/${tag}`);
                 const data = await response.json();
                 return setPosts(data);
             }

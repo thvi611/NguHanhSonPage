@@ -7,7 +7,7 @@ import SlideImg from "../slideImg/SlideImg";
 export default function SlideBar() {
     const [posts, setPosts] = useState([]);
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:80/api/post`);
+        const response = await fetch(`https://88f6-1-53-200-28.ap.ngrok.io/api/post`);
         const data = await response.json();
         return setPosts(data);
     }

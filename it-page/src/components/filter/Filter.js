@@ -13,7 +13,7 @@ export default function Filter({ username, page }) {
 
     var currentPage = localStorage.getItem('currentPage');
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:80/api/category`);
+        const response = await fetch(`https://88f6-1-53-200-28.ap.ngrok.io/api/category`);
         const data = await response.json();
         return setTags(data);
     }
