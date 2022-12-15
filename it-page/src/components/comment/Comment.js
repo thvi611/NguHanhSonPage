@@ -32,12 +32,12 @@ export default function Comment({comment, state, type, id, admin}){
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`https://88f6-1-53-200-28.ap.ngrok.io/api/comment/${comment.id}`);
+            await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/comment/${comment.id}`);
         } catch (err) {
             console.log(err);
         }
         const fetchPost = async () => {
-            const response = await fetch(`https://88f6-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
+            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
             const data = await response.json();
             return (state(data.comments));
         }
