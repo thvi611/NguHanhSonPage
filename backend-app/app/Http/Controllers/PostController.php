@@ -133,7 +133,9 @@ class PostController extends Controller
             $file_name = $uploadFile->hashName();
             $uploadFile->storeAs('public/images', $file_name);
             $path = '/images/'.$file_name;
-            $post->images[0]->url = $path;
+            $image = Image::where('imageable_id', $post->id)->where('imageable_type','App\Models\Post')->get();
+            $image[0]->url = $path;
+            $image[0]->save();
         }
         $post->save();
         return $post;

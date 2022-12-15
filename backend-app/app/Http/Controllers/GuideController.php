@@ -131,7 +131,9 @@ class GuideController extends Controller
             $file_name = $uploadFile->hashName();
             $uploadFile->storeAs('public/images', $file_name);
             $path = '/images/'.$file_name;
-            $guide->images[0]->url = $path;
+            $image = Image::where('imageable_id', $guide->id)->where('imageable_type','App\Models\Guide')->get();
+            $image[0]->url = $path;
+            $image[0]->save();
         }
         $guide->save();
         return $guide;
