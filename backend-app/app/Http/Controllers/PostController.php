@@ -96,7 +96,7 @@ class PostController extends Controller
      */
     public function getPostByCategoryId(Category $category)
     {
-        $category->load('posts');
+        $category->load('posts.images');
         // $post = Post::all()->load(array('categories' => function($query) use ($category){
         //     $query->where('category_id',$category->id);
         // }));
@@ -125,6 +125,18 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        // dd($request->toArray());
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $uploadFile = $request->file('image');
+        if ($uploadFile != null){
+            $file_name = $uploadFile->hashName();
+            $uploadFile->storeAs('public/images', $file_name);
+            $path = '/images/'.$file_name;
+            $post->images->url = $path;
+        }
+        $post->save();
+        return $post->load('categories','comments','images');
     }
 
     /**
