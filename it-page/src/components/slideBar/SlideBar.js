@@ -19,7 +19,7 @@ export default function SlideBar() {
         <Carousel style={{marginTop:60}}>
             {posts.slice(0, 5).map((p) => (
                 <Carousel.Item interval={5000} key={p.id}>
-                    <SlideImg key={p.id} post={p} />
+                    <SlideImg key={p.id} post={p} type={'post'} />
                 </Carousel.Item>
             ))}
         </Carousel>

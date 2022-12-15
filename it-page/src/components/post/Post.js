@@ -7,7 +7,7 @@ import { useEffect, useState} from "react";
 //const { user } = useContext(AuthContext);
 //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-export default function Post({post}){
+export default function Post({post, type}){
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default function Post({post}){
                 renderImage(image)
             ))}
             <div className="title">
-                <Link to={`/postDetail/${post.id}`}>
+                <Link to={`/postDetail/${type}/${post.id}`}>
                     {post.title}
                 </Link>
             </div>

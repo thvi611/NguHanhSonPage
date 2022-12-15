@@ -8,7 +8,7 @@ import Carousel from 'react-bootstrap/Carousel';
 //const { user } = useContext(AuthContext);
 //const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-export default function SlideImg({post}){
+export default function SlideImg({post, type}){
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -45,10 +45,10 @@ export default function SlideImg({post}){
                 renderImage(image)
             ))}
             <Carousel.Caption>
-                <Link to={`/postDetail/${post.id}`} style={{color:"white",textDecoration: "none",fontSize:30}}>
+                <Link to={`/postDetail/${type}/${post.id}`} style={{color:"white",textDecoration: "none",fontSize:30}}>
                     {post.title}
                 </Link>
-                <post className="cutoff-text" style={{color:"white"}}>{post.content}</post>
+                <p className="cutoff-text" style={{color:"white"}}>{post.content}</p>
             </Carousel.Caption>
         </div>
     );

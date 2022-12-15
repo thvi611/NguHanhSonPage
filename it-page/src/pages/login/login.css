@@ -1,34 +1,47 @@
+.back{
+    background-image: url('./login.jpg');
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .form-sub{
     margin-right: auto;
     margin-left: auto;
     height: 400px;
     width: 600px;
     border-radius: 15px;
-    margin-top:10%;
     display: flex;
     flex-direction: column;
-    background-color: rgb(27, 206, 146);
+    background-color: rgb(255, 255, 255);
 }
 b{
     margin-top: 30px;
     margin-bottom: 40px;
     font-size: 20px;
-    color: white;
+    color: rgb(46, 46, 46);
     margin-left: auto;
     margin-right: auto;
 }
-button{
+.bnt-log{
     height: 50px;
-    width: 100px;
+    width: 200px;
+    background: -webkit-linear-gradient(left,#4689b9,#4d5aec,#8785ff);
+    color: white;
     margin-left: auto;
     margin-right: auto;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
 }
 button:hover{
     background-color: #008CBA;
-    color: white;
 }
 .message {
     font-size: 1.2em;

@@ -9,6 +9,7 @@ export default function Home() {
     <>
       <SlideBar/>
       <Filter/>
+      <div id="back"></div>
       <div className="homeContainer">
         <Outlet/>
       </div>
