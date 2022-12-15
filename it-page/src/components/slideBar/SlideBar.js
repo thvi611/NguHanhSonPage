@@ -7,7 +7,7 @@ import SlideImg from "../slideImg/SlideImg";
 export default function SlideBar() {
     const [posts, setPosts] = useState([]);
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:80/api/post`);
+        const response = await fetch(`http://localhost:8080/api/post`);
         const data = await response.json();
         return setPosts(data);
     }
@@ -19,7 +19,7 @@ export default function SlideBar() {
         <Carousel style={{marginTop:60}}>
             {posts.slice(0, 5).map((p) => (
                 <Carousel.Item interval={5000} key={p.id}>
-                    <SlideImg key={p.id} post={p} />
+                    <SlideImg key={p.id} post={p} type={'post'} />
                 </Carousel.Item>
             ))}
         </Carousel>

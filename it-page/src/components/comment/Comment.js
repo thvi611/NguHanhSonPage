@@ -12,7 +12,7 @@ import {FaTimes} from "react-icons/fa"
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-export default function Comment({comment, state, type, id}){
+export default function Comment({comment, state, type, id, admin}){
     const confirmDelete = async (e) => {
         e.preventDefault();
         confirmAlert({
@@ -32,12 +32,12 @@ export default function Comment({comment, state, type, id}){
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:80/api/comment/${comment.id}`);
+            await axios.delete(`http://localhost:8080/api/comment/${comment.id}`);
         } catch (err) {
             console.log(err);
         }
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/${type}/${id}`);
+            const response = await fetch(`http://localhost:8080/api/${type}/${id}`);
             const data = await response.json();
             return (state(data.comments));
         }
@@ -49,7 +49,11 @@ export default function Comment({comment, state, type, id}){
             <div className="nd">
                 <div className="name d-flex justify-content-between">
                     <p>{comment.name}</p>
-                    <button className='btn delete m-0' onClick={confirmDelete}><FaTimes/></button>
+                    {admin ? (
+                        <button className='btn delete m-0' onClick={confirmDelete}><FaTimes/></button>
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
                 <p className="cmt-content d-flex justify-content-start">{comment.content}</p>
             </div>

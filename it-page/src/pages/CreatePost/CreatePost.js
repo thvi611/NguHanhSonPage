@@ -14,7 +14,7 @@ export default function CreatePost() {
 
     useEffect(() => {
         const fetchCategories = async () => {
-            const response = await fetch(`http://localhost:80/api/category`);
+            const response = await fetch(`http://localhost:8080/api/category`);
             const data = await response.json();
             return (setCategories(data));
         }
@@ -33,7 +33,7 @@ export default function CreatePost() {
         formData.append("categories[0]", category.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post("http://localhost:80/api/post", formData);
+            const resp = await axios.post("http://localhost:8080/api/post", formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {

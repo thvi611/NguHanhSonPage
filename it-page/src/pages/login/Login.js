@@ -36,13 +36,12 @@ export default function Login() {
     }
 
     return (
-        <div className="container">
+        <div className="back">
             <form id="frm1" className="form-sub" noValidate onSubmit={handleSubmit}>
                 <b>ADMIN LOGIN</b>
                 <TextField
                     value={mail}
                     label="Enter your email"
-                    variant="filled"
                     style = {{width: 400,marginTop:30,marginBottom:30,marginLeft:"auto",marginRight:"auto"}}
                     onChange={(e) => {
                         setMail(e.target.value);
@@ -51,14 +50,13 @@ export default function Login() {
                 <TextField
                     value={pass}
                     label="Enter your password"
-                    variant="filled"
                     type="password"
                     style = {{width: 400,marginBottom:30,marginLeft:"auto",marginRight:"auto"}}
                     onChange={(e) => {
                         setPass(e.target.value);
                     }}
                 />
-                <button type="submit">Log In</button>
+                <button className="bnt-log" type="submit">LOGIN</button>
                 <div className="message">{message ? <p>{message}</p> : null}</div>
             </form>
         </div>
