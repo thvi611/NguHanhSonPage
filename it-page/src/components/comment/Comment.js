@@ -33,7 +33,7 @@ export default function Comment({comment, state, type, id, admin}){
     const handleDelete = async () => {
         try {
             await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/comment/${comment.id}`, {
-                method: "get",
+                method: "delete",
                 headers: new Headers({
                   "ngrok-skip-browser-warning": "69420",
                 }),

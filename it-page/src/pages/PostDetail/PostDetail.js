@@ -26,7 +26,12 @@ export default function PostDetail() {
 
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
+            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
+                method: "get",
+                headers: new Headers({
+                  "ngrok-skip-browser-warning": "69420",
+                }),
+            });
             const data = await response.json();
             return (setPost(data), setComments(data.comments), setImages(data.images));
         }
@@ -57,7 +62,12 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", {
+                    method: "post",
+                    headers: new Headers({
+                      "ngrok-skip-browser-warning": "69420",
+                    }),
+                }, comment);
             } catch (err) {
                 console.log(err);
             }
@@ -70,7 +80,12 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment_guide);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", {
+                    method: "post",
+                    headers: new Headers({
+                      "ngrok-skip-browser-warning": "69420",
+                    }),
+                }, comment_guide);
             } catch (err) {
                 console.log(err);
             }
