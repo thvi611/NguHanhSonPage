@@ -13,7 +13,7 @@ export default function Filter({ username, page }) {
 
     var currentPage = localStorage.getItem('currentPage');
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8080/api/category`);
+        const response = await fetch(`http://localhost:80/api/category`);
         const data = await response.json();
         return setTags(data);
     }

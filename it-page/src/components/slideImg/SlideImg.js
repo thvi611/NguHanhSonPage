@@ -23,7 +23,7 @@ export default function SlideImg({post, type}){
             return(
                 <img
                     className="d-block w-100"
-                    src={"http://localhost:8080/storage" + image.url}
+                    src={"http://localhost:80/storage" + image.url}
                     alt="Image One"
                     style={{height: 200,width: "100%",objectFit:"cover",backgroundColor:"green"}}
                 />

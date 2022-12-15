@@ -1,6 +1,7 @@
 import "./topbar.css";
 //import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 //import { useContext } from "react";
 //import { AuthContext } from "../../context/AuthContext";
 //const { user } = useContext(AuthContext);
@@ -35,15 +36,10 @@ export default function Topbar() {
             </div>
             {Admin ? (
                 <>
-                    <div className="admin_page but left">
-                        <Link to={`/admin/`} style={{ textDecoration: "none" }}>
-                            <span className="adminPage" style={{ marginLeft: 30 }}>Quản lý</span>
-                        </Link>
-                    </div>
-                    <div className="new_post">
+                    <div className="admin_page left new_post">
                         <Link to={`/createPost/`} style={{ textDecoration: "none" }}>
-                            <button type="button" className="btn btn-primary" style={{ backgroundColor: 'rgb(29, 188, 250)', width: 40, height: 40, marginTop: 10, marginLeft: 20 }}>
-                                +
+                            <button type="button" className="btn btn-primary" style={{ backgroundColor: 'rgb(29, 188, 250)', width: 40, height: 40, marginTop: 10, marginLeft: 30 }}>
+                                <FaPlus/>
                             </button>
                         </Link>
                     </div>

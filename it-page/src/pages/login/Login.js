@@ -11,7 +11,7 @@ export default function Login() {
     async function loginUser() {
         let item = {email: mail, password: pass}
         console.log(mail,pass);
-        const data = await fetch('http://localhost:8080/api/login', {
+        const data = await fetch('http://localhost:80/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

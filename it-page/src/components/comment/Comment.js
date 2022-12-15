@@ -32,12 +32,12 @@ export default function Comment({comment, state, type, id, admin}){
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:8080/api/comment/${comment.id}`);
+            await axios.delete(`http://localhost:80/api/comment/${comment.id}`);
         } catch (err) {
             console.log(err);
         }
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:8080/api/${type}/${id}`);
+            const response = await fetch(`http://localhost:80/api/${type}/${id}`);
             const data = await response.json();
             return (state(data.comments));
         }

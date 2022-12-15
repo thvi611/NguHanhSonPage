@@ -7,7 +7,7 @@ import SlideImg from "../slideImg/SlideImg";
 export default function SlideBar() {
     const [posts, setPosts] = useState([]);
     const fetchData = async () => {
-        const response = await fetch(`http://localhost:8080/api/post`);
+        const response = await fetch(`http://localhost:80/api/post`);
         const data = await response.json();
         return setPosts(data);
     }
