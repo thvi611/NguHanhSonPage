@@ -38,7 +38,7 @@ export default function FeedPost() {
                 return setPosts(data);
             }
         }
-        console.log(tag);
+        // console.log(tag);
         fetchPosts();
     }, [tag]);
     return (

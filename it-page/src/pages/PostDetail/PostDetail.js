@@ -93,12 +93,12 @@ export default function PostDetail() {
         name.current.value = "";
         content.current.value = "";
         const fetchPost = async () => {
-            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
-                method: "get",
-                headers: new Headers({
-                  "ngrok-skip-browser-warning": "69420",
-                }),
-            });
+                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
+                    method: "get",
+                    headers: new Headers({
+                    "ngrok-skip-browser-warning": "69420",
+                    }),
+                });
             const data = await response.json();
             return (setComments(data.comments));
         }
@@ -135,7 +135,12 @@ export default function PostDetail() {
 
     const handleDeletePost = async () => {
         try {
-            await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/post/${id}`);
+            await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/post/${id}`, {
+                method: "delete",
+                headers: new Headers({
+                  "ngrok-skip-browser-warning": "69420",
+                }),
+            });
             navigate("/");
         } catch (err) {
             console.log(err);
