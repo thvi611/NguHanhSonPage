@@ -17,7 +17,12 @@ export default function UpdatePost() {
     useEffect(() => {
         if (id && type){
             const fetchPost = async () => {
-                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
+                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
+                    method: "get",
+                    headers: new Headers({
+                      "ngrok-skip-browser-warning": "69420",
+                    }),
+                });
                 const data = await response.json();
                 return (title.current.value = data.title, content.current.value = data.content, setImage(data.images[0]));
             }
@@ -36,7 +41,12 @@ export default function UpdatePost() {
         formData.append("content", content.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, formData);
+            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
+                method: "post",
+                headers: new Headers({
+                  "ngrok-skip-browser-warning": "69420",
+                }),
+            }, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {
