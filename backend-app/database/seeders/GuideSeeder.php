@@ -23,6 +23,7 @@ class GuideSeeder extends Seeder
             Image::factory(1)->create([
                 'imageable_id' => $guide->id,
                 'imageable_type' => 'App\Models\Guide',
+                'url' => "/images/" . ($guide->id % 10) .".jfif"
                 // 'url' => 'images/posts' . basename($fakerFileNamePost)
             ]);
 

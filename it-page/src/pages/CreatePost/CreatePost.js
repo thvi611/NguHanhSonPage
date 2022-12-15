@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { useRef, useEffect, useState } from "react";
+import { Link,  useNavigate } from "react-router-dom";
 import './CreatePost.css';
 
 export default function CreatePost() {
@@ -8,8 +9,9 @@ export default function CreatePost() {
     const title = useRef();
     const content = useRef();
     const category = useRef();
-    const image = useRef();
-    
+    const [image, setImage] = useState('');
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchCategories = async () => {
             const response = await fetch(`http://localhost:80/api/category`);
@@ -17,10 +19,26 @@ export default function CreatePost() {
             return (setCategories(data));
         }
         fetchCategories();
-    });
+    }, []);
+
+    const handleChange = (e) => {
+        setImage(e.target.files[0]);
+    }
 
     const handleClick = async (e) => {
-       
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("title", title.current.value);
+        formData.append("content", content.current.value);
+        formData.append("categories[0]", category.current.value);
+        formData.append("image", image);
+        try {
+            const resp = await axios.post("http://localhost:80/api/post", formData);
+            console.log(resp.status === 200 ? "Thank you!" : "Error.");
+            navigate("/");
+        } catch (err) {
+            console.log(err);
+        }
       };
     
     return(
@@ -43,11 +61,11 @@ export default function CreatePost() {
                         </select>
                     </div>
                     <div className="item">
-                        <label for="video">Upload Picture</label>
-                        <input  id="video" type="file" multiple="false" ref={image}/>
+                        <label for="image">Upload Picture</label>
+                        <input  id="image" type="file" onChange={handleChange}/>
                     </div>
                     <div className="btn-block">
-                        <button type="submit" href="/">SUBMIT</button>
+                        <button type="submit">SUBMIT</button>
                     </div>
                 </form>
             </div>

@@ -23,6 +23,7 @@ class PostSeeder extends Seeder
             Image::factory(1)->create([
                 'imageable_id' => $post->id,
                 'imageable_type' => 'App\Models\Post',
+                'url' => "/images/" . ($post->id % 10) .".jfif"
                 // 'url' => 'images/posts' . basename($fakerFileNamePost)
             ]);
 
