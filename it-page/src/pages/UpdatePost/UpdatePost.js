@@ -41,12 +41,7 @@ export default function UpdatePost() {
         formData.append("content", content.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
-                method: "post",
-                headers: new Headers({
-                  "ngrok-skip-browser-warning": "69420",
-                }),
-            }, formData);
+            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {

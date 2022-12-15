@@ -39,12 +39,7 @@ export default function CreatePost() {
         formData.append("categories[0]", category.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type.current.value}`, {
-                method: "post",
-                headers: new Headers({
-                  "ngrok-skip-browser-warning": "69420",
-                }),
-            }, formData);
+            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type.current.value}`, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {

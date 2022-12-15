@@ -62,12 +62,7 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", {
-                    method: "post",
-                    headers: new Headers({
-                      "ngrok-skip-browser-warning": "69420",
-                    }),
-                }, comment);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment);
             } catch (err) {
                 console.log(err);
             }
@@ -80,12 +75,7 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", {
-                    method: "post",
-                    headers: new Headers({
-                      "ngrok-skip-browser-warning": "69420",
-                    }),
-                }, comment_guide);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment_guide);
             } catch (err) {
                 console.log(err);
             }
