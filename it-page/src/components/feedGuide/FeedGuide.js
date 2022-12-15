@@ -19,11 +19,21 @@ export default function FeedGuide(){
     useEffect(() => {
         const fetchPosts = async () => {
             if(!tag==='all'){
-                const response = await fetch(`http://localhost:80/api/guide/category/${tag}`);
+                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/guide/category/${tag}`, {
+                    method: "get",
+                    headers: new Headers({
+                      "ngrok-skip-browser-warning": "69420",
+                    }),
+                  });
                 const data = await response.json();
                 return setPosts(data);
             }else{
-                const response = await fetch(`http://localhost:80/api/guide`);
+                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/guide`, {
+                    method: "get",
+                    headers: new Headers({
+                      "ngrok-skip-browser-warning": "69420",
+                    }),
+                  });
                 const data = await response.json();
                 return setPosts(data);
             }

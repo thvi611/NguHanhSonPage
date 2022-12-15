@@ -17,7 +17,7 @@ export default function UpdatePost() {
     useEffect(() => {
         if (id && type){
             const fetchPost = async () => {
-                const response = await fetch(`http://localhost:80/api/${type}/${id}`);
+                const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
                 const data = await response.json();
                 return (title.current.value = data.title, content.current.value = data.content, setImage(data.images[0]));
             }
@@ -36,7 +36,7 @@ export default function UpdatePost() {
         formData.append("content", content.current.value);
         formData.append("image", image);
         try {
-            const resp = await axios.post(`http://localhost:80/api/${type}/${id}`, formData);
+            const resp = await axios.post(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, formData);
             console.log(resp.status === 200 ? "Thank you!" : "Error.");
             navigate("/");
         } catch (err) {
@@ -46,7 +46,7 @@ export default function UpdatePost() {
     
     const renderImage = () => {
         return(
-            <img src={"http://localhost:80/storage" + image.url} alt='' style={{height: "50%",width: "50%",objectFit:"contain"}} className="m-0"/>
+            <img src={"https://ff53-1-53-200-28.ap.ngrok.io/storage" + image.url} alt='' style={{height: "50%",width: "50%",objectFit:"contain"}} className="m-0"/>
         );
     }
     

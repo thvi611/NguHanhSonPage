@@ -26,7 +26,7 @@ export default function PostDetail() {
 
     useEffect(() => {
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/${type}/${id}`);
+            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
             const data = await response.json();
             return (setPost(data), setComments(data.comments), setImages(data.images));
         }
@@ -57,7 +57,7 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("http://localhost:80/api/comment", comment);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment);
             } catch (err) {
                 console.log(err);
             }
@@ -70,7 +70,7 @@ export default function PostDetail() {
                 image: '',
             };
             try {
-                await axios.post("http://localhost:80/api/comment", comment_guide);
+                await axios.post("https://ff53-1-53-200-28.ap.ngrok.io/api/comment", comment_guide);
             } catch (err) {
                 console.log(err);
             }
@@ -78,7 +78,7 @@ export default function PostDetail() {
         name.current.value = "";
         content.current.value = "";
         const fetchPost = async () => {
-            const response = await fetch(`http://localhost:80/api/${type}/${id}`);
+            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`);
             const data = await response.json();
             return (setComments(data.comments));
         }
@@ -88,7 +88,7 @@ export default function PostDetail() {
     const renderImage = (image) => {
         if (image.url.includes("/images/"))
             return (
-                <img src={"http://localhost:80/storage" + image.url} alt='' style={{ height: "50%", width: "100%", objectFit: "contain" }} className="m-0" />
+                <img src={"https://ff53-1-53-200-28.ap.ngrok.io/storage" + image.url} alt='' style={{ height: "50%", width: "100%", objectFit: "contain" }} className="m-0" />
             );
         else
             return (
@@ -115,7 +115,7 @@ export default function PostDetail() {
 
     const handleDeletePost = async () => {
         try {
-            await axios.delete(`http://localhost:80/api/post/${id}`);
+            await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/post/${id}`);
             navigate("/");
         } catch (err) {
             console.log(err);
