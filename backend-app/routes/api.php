@@ -32,6 +32,7 @@ Route::get('/post', [PostController::class, 'index']);
 Route::get('/post/{post}', [PostController::class, 'show']);
 Route::get('/post/category/{category}', [PostController::class, 'getPostByCategoryId']);
 Route::post('/post', [PostController::class, 'store']);
+Route::post('/post/{post}', [PostController::class, 'update']);
 Route::delete('/post/{post}', [PostController::class, 'destroy']);
 
 // categories
