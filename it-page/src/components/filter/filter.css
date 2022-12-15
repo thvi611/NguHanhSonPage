@@ -1,6 +1,7 @@
 .filter-search{
     margin-top: 60px;
     position: fixed;
+    z-index: 1;
 }
 
 .dropbtn {
