@@ -12,7 +12,7 @@ export default function Login() {
         let item = {email: mail, password: pass}
         console.log(mail,pass);
         const data = await fetch('https://f9db-117-2-255-218.ap.ngrok.io/api/login', {
-            method: "get",
+            method: "post",
             headers: new Headers({
               "ngrok-skip-browser-warning": "69420",
             }),
