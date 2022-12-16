@@ -32,7 +32,7 @@ export default function Comment({comment, state, type, id, admin}){
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`https://ff53-1-53-200-28.ap.ngrok.io/api/comment/${comment.id}`, {
+            await axios.delete(`https://f9db-117-2-255-218.ap.ngrok.io/api/comment/${comment.id}`, {
                 method: "delete",
                 headers: new Headers({
                   "ngrok-skip-browser-warning": "69420",
@@ -42,7 +42,7 @@ export default function Comment({comment, state, type, id, admin}){
             console.log(err);
         }
         const fetchPost = async () => {
-            const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/${type}/${id}`, {
+            const response = await fetch(`https://f9db-117-2-255-218.ap.ngrok.io/api/${type}/${id}`, {
                 method: "get",
                 headers: new Headers({
                   "ngrok-skip-browser-warning": "69420",

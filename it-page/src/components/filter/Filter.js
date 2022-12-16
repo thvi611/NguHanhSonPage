@@ -13,7 +13,7 @@ export default function Filter({ username, page }) {
 
     var currentPage = localStorage.getItem('currentPage');
     const fetchData = async () => {
-        const response = await fetch(`https://ff53-1-53-200-28.ap.ngrok.io/api/category`, {
+        const response = await fetch(`https://f9db-117-2-255-218.ap.ngrok.io/api/category`, {
             method: "get",
             headers: new Headers({
               "ngrok-skip-browser-warning": "69420",
